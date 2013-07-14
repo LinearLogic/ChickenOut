@@ -1,18 +1,28 @@
 package com.entrocorp.linearlogic.chickenout;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ChickenLayEggEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ChickenOut extends JavaPlugin implements Listener {
 
 	private final String prefix = ChatColor.GRAY + "[" + ChatColor.GOLD + "Chicken" + ChatColor.YELLOW + ChatColor.ITALIC + "Out!" + ChatColor.GRAY + "] ";
+	private Random rand;
 
 	@Override
 	public void onEnable() {
@@ -72,6 +82,21 @@ public class ChickenOut extends JavaPlugin implements Listener {
 				event.setCancelled(true);
 				return;
 			}
+		}
+
+		// Test item drop modification (change material; add enchantment, display name, and lore):
+		if (getConfig().getBoolean("golden-eggs.enabled")) {
+			if (rand.nextDouble() > getConfig().getDouble("golden-eggs.chance"))
+				return;
+			ItemStack item = new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1);
+			ItemMeta meta = item.getItemMeta();
+			meta.setDisplayName("Golden Egg");
+			List<String> lore = new ArrayList<String>();
+			lore.add("An extremely rare egg");
+			lore.add("laid by a sacred hen!");
+			meta.setLore(lore);
+			item.setItemMeta(meta);
+			event.setItem(item);
 		}
 	}
 }
