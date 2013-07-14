@@ -1,1 +1,6 @@
-disable-egg-laying: false
+disable-egg-laying:
+    global: false
+    in-biomes:
+    - DESERT
+    - BEACH
+    - FOREST_HILLS

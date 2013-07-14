@@ -3,6 +3,7 @@ package com.entrocorp.linearlogic.chickenout;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,7 +49,19 @@ public class ChickenOut extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public void onEggDrop(ChickenLayEggEvent event) {
-		if (getConfig().getBoolean("disable-egg-laying"))
+
+		Chicken chicken = event.getEntity();
+		// Test event cancellation:
+		if (getConfig().getBoolean("disable-egg-laying.global")) {
 			event.setCancelled(true);
+			return;
+		}
+		String biome = chicken.getWorld().getBiome(chicken.getLocation().getBlockX(), chicken.getLocation().getBlockZ()).name();
+		for (String blockedBiome : getConfig().getStringList("disable-egg-laying.in-biomes")) {
+			if (blockedBiome.equalsIgnoreCase(biome)) {
+				event.setCancelled(true);
+				return;
+			}
+		}
 	}
 }

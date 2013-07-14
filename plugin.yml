@@ -1,6 +1,6 @@
 name: ChickenOut
 main: com.entrocorp.linearlogic.chickenout.ChickenOut
-version: 0.3
+version: 0.4
 author: LinearLogic
 commands:
     chickenout:
