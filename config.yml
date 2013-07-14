@@ -4,3 +4,4 @@ disable-egg-laying:
     - DESERT
     - BEACH
     - FOREST_HILLS
+drop-rate: 3600

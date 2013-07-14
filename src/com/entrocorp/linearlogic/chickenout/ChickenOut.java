@@ -51,6 +51,11 @@ public class ChickenOut extends JavaPlugin implements Listener {
 	public void onEggDrop(ChickenLayEggEvent event) {
 
 		Chicken chicken = event.getEntity();
+
+		// Test drop rate modification:
+		if (getConfig().getInt("drop-rate") >= 0) // Plugin has specified a custom drop rate
+			event.setTicksUntilNextEgg(getConfig().getInt("drop-rate"));
+
 		// Test event cancellation:
 		if (getConfig().getBoolean("disable-egg-laying.global")) {
 			event.setCancelled(true);
