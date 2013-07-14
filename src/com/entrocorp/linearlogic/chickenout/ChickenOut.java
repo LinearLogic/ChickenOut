@@ -49,8 +49,13 @@ public class ChickenOut extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public void onEggDrop(ChickenLayEggEvent event) {
-
 		Chicken chicken = event.getEntity();
+
+		// Test validity of the event entity by using its location to spawn exp:
+		if (getConfig().getInt("drop-exp") > 0) {
+			ExperienceOrb exp = (ExperienceOrb) chicken.getWorld().spawnEntity(chicken.getLocation(), EntityType.EXPERIENCE_ORB);
+			exp.setExperience(getConfig().getInt("drop-exp"));
+		}
 
 		// Test drop rate modification:
 		if (getConfig().getInt("drop-rate") >= 0) // Plugin has specified a custom drop rate

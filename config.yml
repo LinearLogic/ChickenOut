@@ -5,3 +5,4 @@ disable-egg-laying:
     - BEACH
     - FOREST_HILLS
 drop-rate: 3600
+drop-exp: 5
