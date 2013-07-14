@@ -1,0 +1,4 @@
+name: ChickenOut
+main: com.entrocorp.linearlogic.chickenout.ChickenOut
+version: 0.1
+author: LinearLogic
