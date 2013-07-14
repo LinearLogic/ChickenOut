@@ -1,4 +1,13 @@
 name: ChickenOut
 main: com.entrocorp.linearlogic.chickenout.ChickenOut
-version: 0.1
+version: 0.2
 author: LinearLogic
+commands:
+    chickenout:
+        description: Root command
+        usage: /<command> [args]
+        aliases: [co]
+permissions:
+    chickenout.reload:
+        description: Permission to reload the config with '/co reload'
+        default: op
