@@ -84,6 +84,10 @@ public class ChickenOut extends JavaPlugin implements Listener {
 			}
 		}
 
+		// Test silent egg laying:
+		if (getConfig().getBoolean("silent-drop"))
+		    event.playSound(false);
+
 		// Test item drop modification (change material; add enchantment, display name, and lore):
 		if (getConfig().getBoolean("golden-eggs.enabled")) {
 			if (rand.nextDouble() > getConfig().getDouble("golden-eggs.chance"))

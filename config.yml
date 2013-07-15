@@ -6,6 +6,7 @@ disable-egg-laying:
     - FOREST_HILLS
 drop-rate: 3600
 drop-exp: 5
+silent-drop: false
 golden-eggs:
     enabled: true
     chance: 0.02
