@@ -22,7 +22,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ChickenOut extends JavaPlugin implements Listener {
 
 	private final String prefix = ChatColor.GRAY + "[" + ChatColor.GOLD + "Chicken" + ChatColor.YELLOW + ChatColor.ITALIC + "Out!" + ChatColor.GRAY + "] ";
-	private Random rand;
+	private Random rand = new Random();
 
 	@Override
 	public void onEnable() {
